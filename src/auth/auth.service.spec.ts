@@ -67,7 +67,6 @@ describe("AuthService", () => {
         jest.clearAllMocks();
     });
 
-    /** ✅ CREATE USER TESTS **/
     describe("createUser", () => {
         it("should create a user successfully", async () => {
             const createUserDto: AuthSignupDto = {
@@ -79,7 +78,7 @@ describe("AuthService", () => {
             userRepository.create.mockResolvedValue({
                 _id: "mockUserId",
                 email: createUserDto.email,
-                password: "hashed_password123", // Adjust to match hashing logic
+                password: "hashed_password123",
             } as UserDocument);
 
             const result = await authService.createUser(createUserDto);
@@ -107,7 +106,6 @@ describe("AuthService", () => {
         });
     });
 
-    /** ✅ LOGIN TESTS **/
     describe("login", () => {
         it("should return a token when credentials are correct", async () => {
             const loginDto: AuthSignupDto = { email: "hameed@example.com", password: "password123" };
@@ -145,7 +143,6 @@ describe("AuthService", () => {
         });
     });
 
-    /** ✅ PROFILE TESTS **/
     describe("profile", () => {
         it("should return user profile if user exists", async () => {
             const user: User = { _id: "userId123", email: "hameed@example.com" } as User;
